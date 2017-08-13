@@ -975,7 +975,7 @@ dodown()
     if (on_level(&valley_level, &u.uz) && !u.uevent.gehennom_entered) {
         You("are standing at the gate to Gehennom.");
         pline("Unspeakable cruelty and harm lurk down there.");
-        if (yn("Are you sure you want to enter?") != 'y')
+        if (ynn("Are you sure you want to enter?") != 'y')
             return 0;
         else
             pline("So be it.");
@@ -1038,7 +1038,7 @@ doup()
         return 1;
     }
     if (ledger_no(&u.uz) == 1) {
-        if (yn("Beware, there will be no return! Still climb?") != 'y')
+        if (ynn("Beware, there will be no return! Still climb?") != 'y')
             return 0;
     }
     if (!next_to_u()) {
@@ -1788,6 +1788,7 @@ long timeout UNUSED;
 int
 donull()
 {
+    rng(3.0, 4.0);
     return 1; /* Do nothing, but let other things happen */
 }
 

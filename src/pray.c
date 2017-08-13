@@ -1782,7 +1782,7 @@ int
 dopray()
 {
     /* Confirm accidental slips of Alt-P */
-    if (ParanoidPray && yn("Are you sure you want to pray?") != 'y')
+    if (ParanoidPray && ynn("Are you sure you want to pray?") != 'y')
         return 0;
 
     u.uconduct.gnostic++;
@@ -1792,7 +1792,7 @@ dopray()
         return 0;
 
     if (wizard && p_type >= 0) {
-        if (yn("Force the gods to be pleased?") == 'y') {
+        if (ynn("Force the gods to be pleased?") == 'y') {
             u.ublesscnt = 0;
             if (u.uluck < 0)
                 u.uluck = 0;

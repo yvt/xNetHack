@@ -665,7 +665,7 @@ boolean user_typed_name, without_asking;
                         Strcat(question, entrytext);
                         Strcat(question, "\"?");
                     }
-                    if (yn(question) == 'y')
+                    if (ynn(question) == 'y')
                         yes_to_moreinfo = TRUE;
                 }
 
@@ -1335,7 +1335,7 @@ doidtrap()
     commands:  basic letters vs digits, 'g' vs 'G' for '5', phone
     keypad vs normal layout of digits, and QWERTZ keyboard swap between
     y/Y/^Y/M-y/M-Y/M-^Y and z/Z/^Z/M-z/M-Z/M-^Z.)
-    
+
     The interpretor understands
      '&#' for comment,
      '&? option' for 'if' (also '&? !option'
@@ -1346,7 +1346,7 @@ doidtrap()
      '&:' for 'else' (also '&: #comment';
                       0 or 1 instance for a given 'if'), and
      '&.' for 'endif' (also '&. #comment'; required for each 'if').
-    
+
     The option handling is a bit of a mess, with no generality for
     which options to deal with and only a comma separated list of
     integer values for the '=value' part.  number_pad is the only

@@ -2074,6 +2074,7 @@ E int FDECL(rnd, (int));
 E int FDECL(d, (int, int));
 E int FDECL(rne, (int));
 E int FDECL(rnz, (int));
+E float FDECL(rng, (float, float));
 
 /* ### role.c ### */
 

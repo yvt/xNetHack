@@ -1017,7 +1017,7 @@ enhance_weapon_skill()
     winid win;
     boolean speedy = FALSE;
 
-    if (wizard && yn("Advance skills without practice?") == 'y')
+    if (wizard && ynn("Advance skills without practice?") == 'y')
         speedy = TRUE;
 
     do {

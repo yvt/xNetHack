@@ -169,7 +169,7 @@ getlock()
 
         if (iflags.window_inited) {
             /* this is a candidate for paranoid_confirmation */
-            c = yn(destroy_old_game_prompt);
+            c = ynn(destroy_old_game_prompt);
         } else {
             (void) printf("\n%s [yn] ", destroy_old_game_prompt);
             (void) fflush(stdout);

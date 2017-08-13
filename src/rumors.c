@@ -515,7 +515,7 @@ struct monst *oracl;
             return 0;
         Sprintf(qbuf, "\"Then dost thou desire a major one?\" (%d %s)",
                 major_cost, currency((long) major_cost));
-        if (yn(qbuf) != 'y')
+        if (ynn(qbuf) != 'y')
             return 0;
         u_pay = (umoney < (long) major_cost) ? (int) umoney : major_cost;
         break;

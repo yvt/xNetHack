@@ -2386,7 +2386,7 @@ struct monst *mon;
                                  " looks pretty.  May I have it?\"", ring,
                                  xname, simpleonames, "ring");
                 makeknown(RIN_ADORNMENT);
-                if (yn(qbuf) == 'n')
+                if (ynn(qbuf) == 'n')
                     continue;
             } else
                 pline("%s decides she'd like %s, and takes it.",
@@ -2420,7 +2420,7 @@ struct monst *mon;
                                 " looks pretty.  Would you wear it for me?\"",
                                  ring, xname, simpleonames, "ring");
                 makeknown(RIN_ADORNMENT);
-                if (yn(qbuf) == 'n')
+                if (ynn(qbuf) == 'n')
                     continue;
             } else {
                 pline("%s decides you'd look prettier wearing %s,",
@@ -2624,7 +2624,7 @@ const char *str;
     if (rn2(20) < ACURR(A_CHA)) {
         Sprintf(qbuf, "\"Shall I remove your %s, %s?\"", str,
                 (!rn2(2) ? "lover" : !rn2(2) ? "dear" : "sweetheart"));
-        if (yn(qbuf) == 'n')
+        if (ynn(qbuf) == 'n')
             return;
     } else {
         char hairbuf[BUFSZ];

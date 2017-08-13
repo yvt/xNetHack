@@ -1333,7 +1333,7 @@ const char *mesg;
             what = the(what);
 
         pline("It smells like %s.", what);
-        if (yn("Eat it?") == 'n') {
+        if (ynn("Eat it?") == 'n') {
             if (flags.verbose)
                 You("discard the open tin.");
             if (!Hallucination)
@@ -1380,7 +1380,7 @@ const char *mesg;
             tin->dknown = tin->known = 1;
         }
 
-        if (yn("Eat it?") == 'n') {
+        if (ynn("Eat it?") == 'n') {
             if (flags.verbose)
                 You("discard the open tin.");
             tin = costly_tin(COST_OPEN);

@@ -794,7 +794,7 @@ wiz_level_change(VOID_ARGS)
 STATIC_PTR int
 wiz_panic(VOID_ARGS)
 {
-    if (yn("Do you want to call panic() and end your game?") == 'y')
+    if (ynn("Do you want to call panic() and end your game?") == 'y')
         panic("Crash test.");
     return 0;
 }
@@ -5462,7 +5462,7 @@ const char *prompt;
             promptprefix = "\"Yes\" or \"No\": ";
         } while (ParanoidConfirm && strcmpi(ans, "no") && --trylimit);
     } else
-        confirmed_ok = (yn(prompt) == 'y');
+        confirmed_ok = (ynn(prompt) == 'y');
 
     return confirmed_ok;
 }

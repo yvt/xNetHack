@@ -77,7 +77,7 @@ int
 dosave()
 {
     clear_nhwindow(WIN_MESSAGE);
-    if (yn("Really save?") == 'n') {
+    if (ynn("Really save?") == 'n') {
         clear_nhwindow(WIN_MESSAGE);
         if (multi > 0)
             nomul(0);
@@ -144,7 +144,7 @@ dosave0()
             (void) nhclose(fd);
             clear_nhwindow(WIN_MESSAGE);
             There("seems to be an old save file.");
-            if (yn("Overwrite the old file?") == 'n') {
+            if (ynn("Overwrite the old file?") == 'n') {
                 nh_compress(fq_save);
                 return 0;
             }

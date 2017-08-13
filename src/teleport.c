@@ -442,7 +442,7 @@ struct obj *scroll;
 
     if ((u.uhave.amulet || On_W_tower_level(&u.uz)) && !rn2(3)) {
         You_feel("disoriented for a moment.");
-        if (!wizard || yn("Override?") != 'y')
+        if (!wizard || ynn("Override?") != 'y')
             return FALSE;
     }
     if ((Teleport_control && !Stunned) || wizard) {
@@ -473,7 +473,7 @@ struct obj *scroll;
         }
     } else if (scroll && scroll->blessed) {
         /* (this used to be handled in seffects()) */
-        if (yn("Do you wish to teleport?") == 'n')
+        if (ynn("Do you wish to teleport?") == 'n')
             return TRUE;
         result = TRUE;
     }
@@ -502,7 +502,7 @@ dotele()
         trap_once = trap->once; /* trap may get deleted, save this */
         if (trap->once) {
             pline("This is a vault teleport, usable once only.");
-            if (yn("Jump in?") == 'n')
+            if (ynn("Jump in?") == 'n')
                 trap = 0;
             else {
                 deltrap(trap);

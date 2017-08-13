@@ -539,7 +539,7 @@ int psflags;
                             : !rn2(4) ? PM_FOG_CLOUD : PM_VAMPIRE_BAT;
             if (controllable_poly) {
                 Sprintf(buf, "Become %s?", an(mons[mntmp].mname));
-                if (yn(buf) != 'y')
+                if (ynn(buf) != 'y')
                     return;
             }
         }
@@ -1310,7 +1310,7 @@ dogaze()
                     Sprintf(qbuf, "Really %s %s?",
                             (adtyp == AD_CONF) ? "confuse" : "attack",
                             mon_nam(mtmp));
-                    if (yn(qbuf) != 'y')
+                    if (ynn(qbuf) != 'y')
                         continue;
                 }
                 setmangry(mtmp, TRUE);

@@ -201,7 +201,7 @@ boolean isyou;
             return;
         }
         if (isyou && wizard) {
-            if (yn("Dry up fountain?") == 'n')
+            if (ynn("Dry up fountain?") == 'n')
                 return;
         }
         /* replace the fountain with ordinary floor */

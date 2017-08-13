@@ -323,7 +323,7 @@ doread()
            maintained illiterate conduct so far, and this mail
            scroll didn't come from bones, ask for confirmation */
         if (!u.uconduct.literate) {
-            if (!scroll->spe && yn(
+            if (!scroll->spe && ynn(
              "Reading mail will violate \"illiterate\" conduct.  Read anyway?"
                                    ) != 'y')
                 return 0;
@@ -2486,7 +2486,7 @@ create_particular()
                 /* wizard mode can override handling of special monsters */
                 Sprintf(buf, "Creating %s instead; force %s?",
                         mons[which].mname, mons[firstchoice].mname);
-                if (yn(buf) == 'y')
+                if (ynn(buf) == 'y')
                     which = firstchoice;
             }
             whichpm = &mons[which];

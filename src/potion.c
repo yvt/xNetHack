@@ -455,7 +455,7 @@ dodrink()
     if (IS_FOUNTAIN(levl[u.ux][u.uy].typ)
         /* not as low as floor level but similar restrictions apply */
         && can_reach_floor(FALSE)) {
-        if (yn("Drink from the fountain?") == 'y') {
+        if (ynn("Drink from the fountain?") == 'y') {
             drinkfountain();
             return 1;
         }
@@ -464,14 +464,14 @@ dodrink()
     if (IS_SINK(levl[u.ux][u.uy].typ)
         /* not as low as floor level but similar restrictions apply */
         && can_reach_floor(FALSE)) {
-        if (yn("Drink from the sink?") == 'y') {
+        if (ynn("Drink from the sink?") == 'y') {
             drinksink();
             return 1;
         }
     }
     /* Or are you surrounded by water? */
     if (Underwater && !u.uswallow) {
-        if (yn("Drink the water around you?") == 'y') {
+        if (ynn("Drink the water around you?") == 'y') {
             pline("Do you know what lives in this water?");
             return 1;
         }
@@ -1851,7 +1851,7 @@ dodip()
         Sprintf(qbuf, "%s%s into the fountain?", Dip_,
                 flags.verbose ? obuf : shortestname);
         /* "Dip <the object> into the fountain?" */
-        if (yn(qbuf) == 'y') {
+        if (ynn(qbuf) == 'y') {
             dipfountain(obj);
             return 1;
         }
@@ -1861,7 +1861,7 @@ dodip()
         Sprintf(qbuf, "%s%s into the %s?", Dip_,
                 flags.verbose ? obuf : shortestname, pooltype);
         /* "Dip <the object> into the {pool, moat, &c}?" */
-        if (yn(qbuf) == 'y') {
+        if (ynn(qbuf) == 'y') {
             if (Levitation) {
                 floating_above(pooltype);
             } else if (u.usteed && !is_swimmer(u.usteed->data)

@@ -2,17 +2,21 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
+#include <math.h>
 
 /* "Rand()"s definition is determined by [OS]conf.h */
 #if defined(LINT) && defined(UNIX) /* rand() is long... */
 extern int NDECL(rand);
 #define RND(x) (rand() % x)
+#define RNDRAW() (rand())
 #else /* LINT */
 #if defined(UNIX) || defined(RANDOM)
 #define RND(x) ((int) (Rand() % (long) (x)))
+#define RNDRAW() ((int) Rand())
 #else
 /* Good luck: the bottom order bits are cyclic. */
 #define RND(x) ((int) ((Rand() >> 3) % (x)))
+#define RNDRAW() ((int) RND(RAND_MAX))
 #endif
 #endif /* LINT */
 
@@ -157,6 +161,38 @@ int i;
         x /= tmp;
     }
     return (int) x;
+}
+
+/* rng: generate a gaussian random variable with the given mean and stdev,
+ * using the Marsaglia polar method. */
+float
+rng(mean, stdev)
+float mean;
+float stdev;
+{
+    float x, y, r2;
+    int i, j;
+    do {
+        /* pick two floating-point values from -1 to 1 */
+        do {
+            i = RNDRAW();
+            j = RNDRAW();
+            /* we don't actually want RAND_MAX to be picked, because we need an
+             * odd-sized pool of numbers to pick from for fairness */
+        } while(i == RAND_MAX || j == RAND_MAX);
+        x = (float) (i - (RAND_MAX / 2)) / (RAND_MAX / 2);
+        y = (float) (j - (RAND_MAX / 2)) / (RAND_MAX / 2);
+        /* reject points outside the unit circle */
+        r2 = x*x + y*y;
+    } while (r2 > 1);
+
+    x = x * sqrt((-2 * logf(r2)) / r2);
+    /* this method returns two normally distributed points at once, doing the
+     * same thing for y, but we have to discard the second value because it
+     * probably can't be reliably cached */
+    pline("x = %f", x*stdev + mean);
+
+    return (x*stdev) + mean;
 }
 
 /*rnd.c*/
