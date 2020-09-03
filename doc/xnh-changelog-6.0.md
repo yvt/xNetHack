@@ -285,3 +285,4 @@ changes:
   lamps, etc) light on fire.
 - New function adj_monnam(), which contains the logic from Adjmonnam but
   doesn't force the first character to be uppercase. Adjmonnam now calls this.
+- New function armor_bonus(), which is converted from the ARM_BONUS macro.
