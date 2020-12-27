@@ -573,6 +573,16 @@ unsigned int *stuckid, *steedid;
     if (nhfp->structlevel)
         mread(nhfp->fd, (genericptr_t) &flags, sizeof (struct flag));
 
+    if (strlen(flags.inv_order) > sizeof flags.inv_order - 1) {
+        /* Repair the data corruption (copperwater/xNetHack#20) */
+        extern const char def_inv_order[MAXOCLASSES];
+
+        pline("Repairing the data corruption of flags.inv_order...");
+        (void) memcpy((genericptr_t) flags.inv_order,
+                      (genericptr_t) def_inv_order, sizeof flags.inv_order);
+        flags.pickup_types[0] = '\0';
+    }
+
     /* avoid keeping permanent inventory window up to date during restore
        (setworn() calls update_inventory); attempting to include the cost
        of unpaid items before shopkeeper's bill is available is a no-no;
